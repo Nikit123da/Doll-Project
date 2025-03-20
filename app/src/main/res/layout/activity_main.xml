@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradiant_list"
+    tools:context=".MainActivity"
+    android:id="@+id/mainLayout">
+
+    <ImageView
+        android:id="@+id/idIVLogo"
+        android:layout_width="147dp"
+        android:layout_height="110dp"
+        android:layout_margin="0dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/doobonili_logo" />
+
+    <Button
+        android:background="@drawable/white_backgroudn_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cornerRadius = "20dp"
+        android:id="@+id/Login"
+        android:drawablePadding="8dp"
+        android:text="Login"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+
+    <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cornerRadius = "20dp"
+        android:id="@+id/Singup"
+        android:drawablePadding="8dp"
+        android:layout_marginTop="10dp"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:padding="8dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/transparent_button"
+        />
+
+
+</LinearLayout>

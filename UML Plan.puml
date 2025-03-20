@@ -1,0 +1,319 @@
+@startuml
+class com.example.doll_project.CameraFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- {static} int CAMERA_PERM_CODE
+- String mParam1
+- String mParam2
+~ Uri image
+- Bitmap bitmap
+- ActivityResultLauncher<String> storageResultActivity
+- FirebaseStorage storage
+- StorageReference storageReference
+- int PICK_IMAGE_REQUEST
+~ Button btnCam
+~ ImageView selectedPic
+~ String currentPhotoPath
++ {static} CameraFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void choosePicture()
+- void registerWriteExternalStoragePermission()
+- void checkStoragePermissionAndSaveImage(Bitmap)
++ void onAttach(Context)
++ void onActivityResult(int,int,Intent)
+- void uploadPicture(Uri)
+}
+
+
+class com.example.doll_project.Adapter {
+- ArrayList<kidsData> list
+- Context context
+~ Uri image
+- int PICK_IMAGE_REQUEST
+- RecyclerViewInterface recyclerViewInterface
++ MyViewHolder onCreateViewHolder(ViewGroup,int)
++ Context getRecyclerViewInterface()
++ int getItemCount()
++ void onBindViewHolder(MyViewHolder,int)
+}
+
+
+class com.example.doll_project.Adapter$MyViewHolder {
+- TextView name
+- TextView email
+- ImageView img
+}
+
+class com.example.doll_project.User {
+- String Email
+- String id
++ String getId()
++ void setId(String)
++ void setEmail(String)
++ void setUserName(String)
++ void setPhoneNumber(String)
++ String GetUserName()
++ String GetUserPhoneNum()
++ String GetUserEmail()
++ void SetUserName(String)
++ String toString()
+}
+
+
+class com.example.doll_project.MainActivity {
+- ImageView logoIV
+- Button login
+# void onCreate(Bundle)
+}
+
+
+class com.example.doll_project.HomeScreen {
+~ BottomNavigationView bottomNavigationView
+~ String email
+~ RecyclerViewInterface recyclerViewInterface
+~ HomeFragment homeFragment
+~ UserFragment userFragment
+~ ChatGPTFragment heartMonitorFragment
+~ CameraFragment cameraFragment
+# void onCreate(Bundle)
++ void onPointerCaptureChanged(boolean)
++ boolean onNavigationItemSelected(MenuItem)
++ void onClickListener(int)
++ void onItemClick(int)
+}
+
+
+class com.example.doll_project.Messege {
++ {static} String SENT_BY_ME
++ {static} String SENT_BY_BOT
+~ String message
+~ String sentBy
++ String getMessage()
++ void setMessage(String)
++ String getSentBy()
++ void setSentBy(String)
+}
+
+
+class com.example.doll_project.HomeFragment {
+- String param1
+- String param2
+- ImageView image
+- FirebaseStorage storage
+- StorageReference storageReference
+~ FirebaseAuth mAuth
+~ Button btnLogout
+~ StorageReference setProfilePicture
+~ File localFile
+~ ArrayList<User> userArrayList
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ {static} HomeFragment newInstance(String,String)
++ void onViewCreated(View,Bundle)
++ void onClickListener(int)
++ void onItemClick(int)
+}
+
+
+class com.example.doll_project.MessageAdapter {
+~ List<Messege> messegeList
++ MyViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MyViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.doll_project.MessageAdapter$MyViewHolder {
+~ LinearLayout leftChatView
+~ TextView leftTextView
+}
+
+class com.example.doll_project.SelectedRecycleView {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+~ TextView selectedUser
++ {static} SelectedRecycleView newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+
+
+class com.example.doll_project.FirstFragment {
+- String param1
+- String param2
+~ RecyclerViewInterface recyclerViewInterface
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ {static} FirstFragment newInstance(String,String)
++ void onViewCreated(View,Bundle)
+}
+
+
+class com.example.doll_project.ChatGPTFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+~ RecyclerView recyclerView
+~ TextView welcomeTextView
+~ EditText messageEditText
+~ ImageButton sendButton
+~ List<Messege> messageList
+~ MessageAdapter messageAdapter
++ {static} MediaType JSON
+~ OkHttpClient client
++ {static} ChatGPTFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+~ void addToChat(String,String)
+~ void addResponse(String)
+~ void callAPI(String)
+}
+
+
+class com.example.doll_project.UserFragment {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+~ FirebaseFirestore db
+- FirebaseStorage storage
+~ Uri image
+~ FirebaseAuth firebaseAuth
+~ String UserId
+- StorageReference storageReference
+- Button buttonSave
+- int PICK_IMAGE_REQUEST
+- ImageView ProfilePic
+~ EditText phoneNum
+~ TextView email
++ {static} UserFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void choosePicture()
++ void onActivityResult(int,int,Intent)
+- void uploadPicture(Uri,String)
+- void updateUser(String,String,String,String)
+}
+
+
+class com.example.doll_project.Login_screen {
+~ EditText Email
+~ TextView singupintentButton
+~ Button loginButton
+- FirebaseAuth firebaseAuth
+# void onCreate(Bundle)
+}
+
+
+class com.example.doll_project.UserViewHolder {
+~ ImageView UserImg
+~ TextView UserName
+}
+
+interface com.example.doll_project.RecyclerViewInterface {
+~ void onClickListener(int)
+~ void onItemClick(int)
+}
+
+class com.example.doll_project.UserAdapter {
+~ List<User> items
+~ Context context
++ UserViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(UserViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.doll_project.KidsDataGrafhPoints {
+- int[][] kidsPoints
+}
+
+class com.example.doll_project.GraphScreen {
+~ GraphView graphView
+# void onCreate(Bundle)
+}
+
+
+class com.example.doll_project.Singup_screen {
+~ EditText loginEmailAdress
+~ TextView singInIntent
+~ Button SingUpButton
+~ FirebaseFirestore db
+- FirebaseAuth firebaseAuth
+# void onCreate(Bundle)
+- void addDataToFirestore(String,String,String)
+- void registerNewUser()
+}
+
+
+class com.example.doll_project.RecyclviewExpention {
+~ LineGraphSeries<DataPoint> series
++ String name
+~ FirebaseFirestore db
+~ TextView tvName
+~ Map<String,Object> data
+- int[] arrayList
+# void onCreate(Bundle)
+}
+
+
+class com.example.doll_project.KidsArrayList {
+- {static} ArrayList<kidsData> kidsData
+~ ConstraintLayout constraintLayout
++ {static} ArrayList<kidsData> getKidsData()
++ {static} int[] CreateKidsPoints()
++ {static} int[] getArray(ArrayList<kidsData>,int)
++ {static} int getKidsPointX(int[][],int,int)
++ {static} int Avg(int[])
++ {static} String Feels(int[])
+}
+
+
+class com.example.doll_project.kidsData {
+- String name
+- String emotion
+- int[] kidsPoints
+- ImageView img
+~ ConstraintLayout constraintLayout
+~ Context context
++ String getEmotion()
++ String getName()
++ int[] getKidsPoints()
++ ImageView getImg()
++ void SetImg(ImageView)
++ int getKidsPointsX(int[][],int,int)
+}
+
+
+
+
+androidx.fragment.app.Fragment <|-- com.example.doll_project.CameraFragment
+com.example.doll_project.Adapter <|-- com.example.doll_project.Adapter
+com.example.doll_project.Adapter +.. com.example.doll_project.Adapter$MyViewHolder
+com.example.doll_project.ViewHolder <|-- com.example.doll_project.Adapter$MyViewHolder
+java.io.Serializable <|.. com.example.doll_project.User
+androidx.appcompat.app.AppCompatActivity <|-- com.example.doll_project.MainActivity
+com.example.doll_project.OnItemSelectedListener <|.. com.example.doll_project.HomeScreen
+com.example.doll_project.RecyclerViewInterface <|.. com.example.doll_project.HomeScreen
+androidx.appcompat.app.AppCompatActivity <|-- com.example.doll_project.HomeScreen
+com.example.doll_project.RecyclerViewInterface <|.. com.example.doll_project.HomeFragment
+androidx.fragment.app.Fragment <|-- com.example.doll_project.HomeFragment
+com.example.doll_project.Adapter <|-- com.example.doll_project.MessageAdapter
+com.example.doll_project.MessageAdapter +.. com.example.doll_project.MessageAdapter$MyViewHolder
+com.example.doll_project.ViewHolder <|-- com.example.doll_project.MessageAdapter$MyViewHolder
+androidx.fragment.app.Fragment <|-- com.example.doll_project.SelectedRecycleView
+androidx.fragment.app.Fragment <|-- com.example.doll_project.FirstFragment
+androidx.fragment.app.Fragment <|-- com.example.doll_project.ChatGPTFragment
+androidx.fragment.app.Fragment <|-- com.example.doll_project.UserFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.doll_project.Login_screen
+com.example.doll_project.ViewHolder <|-- com.example.doll_project.UserViewHolder
+com.example.doll_project.Adapter <|-- com.example.doll_project.UserAdapter
+androidx.appcompat.app.AppCompatActivity <|-- com.example.doll_project.GraphScreen
+androidx.appcompat.app.AppCompatActivity <|-- com.example.doll_project.Singup_screen
+androidx.appcompat.app.AppCompatActivity <|-- com.example.doll_project.RecyclviewExpention
+java.io.Serializable <|.. com.example.doll_project.kidsData
+@enduml

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571336851783",
+    "project_id": "doll-project-3bbe9",
+    "storage_bucket": "doll-project-3bbe9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571336851783:android:884a3ab843a96a30664c62",
+        "android_client_info": {
+          "package_name": "com.example.doll_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtAV-RvRMKkfypwt3NAVHKH8HCgSFtjMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
